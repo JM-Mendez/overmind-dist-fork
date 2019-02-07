@@ -1,0 +1,41 @@
+{
+  "name": "overmind",
+  "version": "1.0.0-alpha1",
+  "description": "Functional actions",
+  "author": "Christian Alfoni <christianalfoni@gmail.com>",
+  "license": "MIT",
+  "repository": "git+https://github.com/cerebral/overmind.git",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "npm run build:lib & npm run build:es",
+    "build:lib": "tsc --outDir lib --module commonjs",
+    "build:es": "tsc --outDir es --module es2015",
+    "clean": "rimraf es lib coverage",
+    "typecheck": "tsc --noEmit",
+    "test": "jest --runInBand",
+    "test:watch": "jest --watch --updateSnapshot --coverage false",
+    "prebuild": "npm run clean",
+    "postbuild": "rimraf {lib,es}/**/__tests__",
+    "posttest": "npm run typecheck"
+  },
+  "keywords": [
+    "state",
+    "sideeffects",
+    "app",
+    "framework"
+  ],
+  "files": [
+    "lib",
+    "es",
+    "config"
+  ],
+  "dependencies": {
+    "@types/node": "^10.5.1",
+    "is-plain-obj": "^1.1.0",
+    "betsy": "next",
+    "proxy-state-tree": "next",
+    "tslib": "^1.9.3"
+  }
+}
